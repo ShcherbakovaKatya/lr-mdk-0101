@@ -17,7 +17,18 @@ namespace GitHub
             Console.WriteLine("Введите третье число ");
             int c = Convert.ToInt32(Console.ReadLine());
 
-
+            if (a >= b && a >= c)
+            {
+                int max = a;
+            }
+            else if (b >= a && b >= c)
+            {
+                int max = b;
+            }
+            else 
+            {
+                int max = c;
+            }
         }
     }
 }
