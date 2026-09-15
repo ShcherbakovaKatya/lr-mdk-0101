@@ -61,5 +61,31 @@ namespace lr1_0101
                 }
             }
         }
+        public static double DeliveryCost(int a, int b, int c)
+        {
+            double amount = 0;
+            double result = 0;
+            if (a < 2000)
+            {
+                if (b < 3)
+                {
+                    result = 150;
+                }
+                else
+                {
+                    result = 150 + ((b - 3) * 50);
+                }
+                if (c == 12 || c == 13 || c == 14 || c == 18 || c == 19 || c == 20)
+                {
+                    result = result + result * 0.3;
+                }
+            }
+            else
+            {
+                result = 0;
+            }
+            return result;
+        }
+        
     }
 }
