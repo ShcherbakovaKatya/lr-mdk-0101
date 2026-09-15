@@ -63,7 +63,6 @@ namespace lr1_0101
         }
         public static double DeliveryCost(int a, int b, int c)
         {
-            double amount = 0;
             double result = 0;
             if (a < 2000)
             {
@@ -86,6 +85,10 @@ namespace lr1_0101
             }
             return result;
         }
-        
+        public static double AllCost(int a,double b)
+        {
+            double c = a + b;
+            return c;
+        }
     }
 }

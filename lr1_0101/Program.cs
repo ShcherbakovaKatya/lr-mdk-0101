@@ -14,6 +14,7 @@ namespace lr1_0101
             int b = SuperFunctions.Input2();
             int c = SuperFunctions.Input3();
             Console.WriteLine($"Стоимость доставки: {SuperFunctions.DeliveryCost(a, b, c)} руб.");
+            Console.WriteLine($"Итого к оплате: {SuperFunctions.AllCost(a, SuperFunctions.DeliveryCost(a, b, c))} руб.");
         }
     }
 }
