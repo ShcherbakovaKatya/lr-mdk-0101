@@ -10,6 +10,10 @@ namespace lr1_0101
     {
         static void Main(string[] args)
         {
+            int a = SuperFunctions.Input();
+            int b = SuperFunctions.Input2();
+            int c = SuperFunctions.Input3();
+
         }
     }
 }
