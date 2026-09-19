@@ -11,17 +11,8 @@ namespace task2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Сколько элементов в массиве: ");
-            int a = Convert.ToInt32(Console.ReadLine());
-            int[] arr = new int[a];
-
-            for (int i = 0; i<a; i++)
-            {
-                Console.WriteLine("Введите элемент массива: ");
-                arr[i] = Convert.ToInt32(Console.ReadLine());
-
-            }
-
+            int[] arr = Functions.CreateArr();
+            Functions.FillArr(arr);
             int max = arr.Max();
             int maxIndex = Array.IndexOf(arr, arr.Max());
             Console.Write($"Максимальное число в массиве - {max}. Его индекс - {maxIndex}");
