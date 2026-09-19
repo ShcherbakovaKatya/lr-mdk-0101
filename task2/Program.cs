@@ -19,9 +19,12 @@ namespace task2
             {
                 Console.WriteLine("Введите элемент массива: ");
                 arr[i] = Convert.ToInt32(Console.ReadLine());
+
             }
-            foreach (int n in arr)
-                Console.Write(n + " ");
+
+            int max = arr.Max();
+            int maxIndex = Array.IndexOf(arr, arr.Max());
+            Console.Write($"Максимальное число в массиве - {max}. Его индекс - {maxIndex}");
         }
     }
 }
