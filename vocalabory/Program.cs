@@ -44,31 +44,42 @@ namespace vocalabory
             {
                 { "10.00-12.00", 7},
                 { "12.00-15.00", 10},
-                { "15.00-18.00", 3 }
+                { "15.00-18.00", 7},
+                { "18.00-21.00", 10}
             };
 
-            int max = 0;
-            int min = 100000;
+            int max = PeopleInHour["10.00-12.00"];
+            int min = PeopleInHour["10.00-12.00"];
 
-            string max2 = "";
-            string min2 = "";
+            List <string> PeriodsMax = new List<string>();
+            List<string> PeriodsMin = new List<string>();
 
             foreach (KeyValuePair<string, int> person in PeopleInHour)
                 if (person.Value > max)
                 {
-                    max2 = person.Key;
                     max = person.Value;
+                    PeriodsMax.Add(person.Key);
                 }
 
             foreach (KeyValuePair<string, int> person in PeopleInHour)
-                if (person.Value < min)
+                if (person.Value <= min)
                 {
                     min = person.Value;
-                    min2 = person.Key;
+                    PeriodsMin.Add(person.Key);
                 }
 
-            Console.WriteLine($"Максимум в период: {max2}, минимум в период: {min2}");
-            
+            Console.WriteLine("Период с максимальной посещаемостью: ");
+            foreach (var Hours in PeriodsMax)
+            {
+                Console.Write(Hours + " ");
+            }
+
+            Console.WriteLine("\nПериод с минимальной посещаемостью: ");
+            foreach (var Hours in PeriodsMin)
+            {
+                Console.Write(Hours + " ");
+            }
+
         }
     }
 }
