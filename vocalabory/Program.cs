@@ -62,31 +62,33 @@ namespace vocalabory
             List <int> PeriodsMax = new List<int>();
             List<int> PeriodsMin = new List<int>();
 
+
             foreach (KeyValuePair<int, int> person in PeopleInHour)
                 if (person.Value > max)
                 {
                     max = person.Value;
+                }
+            foreach (KeyValuePair<int, int> person in PeopleInHour)
+                if (person.Value == max)
+                {
                     PeriodsMax.Add(person.Key);
                 }
+
 
             foreach (KeyValuePair<int, int> person in PeopleInHour)
                 if (person.Value <= min)
                 {
                     min = person.Value;
+                }
+            foreach (KeyValuePair<int, int> person in PeopleInHour)
+                if (person.Value == min)
+                {
                     PeriodsMin.Add(person.Key);
                 }
 
             Console.WriteLine("Период с максимальной посещаемостью: ");
-            foreach (var Hours in PeriodsMax)
-            {
-                Console.Write(Hours + " ");
-            }
 
             Console.WriteLine("\nПериод с минимальной посещаемостью: ");
-            foreach (var Hours in PeriodsMin)
-            {
-                Console.Write(Hours + " ");
-            }
 
         }
     }
