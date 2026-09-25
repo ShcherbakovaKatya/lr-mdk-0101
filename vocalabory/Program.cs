@@ -40,28 +40,36 @@ namespace vocalabory
             //foreach (KeyValuePair<string, int> person in people)
             //    Console.WriteLine($"Фамилия: {person.Key}. Возраст: {person.Value}");
 
-            Dictionary<string, int> PeopleInHour = new Dictionary<string, int>()
+            Dictionary<int, int> PeopleInHour = new Dictionary<int, int>()
             {
-                { "10.00-12.00", 7},
-                { "12.00-15.00", 10},
-                { "15.00-18.00", 7},
-                { "18.00-21.00", 10}
+                {7, 7},
+                {8, 10},
+                {9, 12},
+                {10, 12},
+                {11, 12},
+                {12, 7},
+                {13, 6},
+                {14, 3},
+                {15, 2},
+                {16, 2},
+                {17, 1},
+                {18, 3},
             };
 
-            int max = PeopleInHour["10.00-12.00"];
-            int min = PeopleInHour["10.00-12.00"];
+            int max = PeopleInHour[7];
+            int min = PeopleInHour[7];
 
-            List <string> PeriodsMax = new List<string>();
-            List<string> PeriodsMin = new List<string>();
+            List <int> PeriodsMax = new List<int>();
+            List<int> PeriodsMin = new List<int>();
 
-            foreach (KeyValuePair<string, int> person in PeopleInHour)
+            foreach (KeyValuePair<int, int> person in PeopleInHour)
                 if (person.Value > max)
                 {
                     max = person.Value;
                     PeriodsMax.Add(person.Key);
                 }
 
-            foreach (KeyValuePair<string, int> person in PeopleInHour)
+            foreach (KeyValuePair<int, int> person in PeopleInHour)
                 if (person.Value <= min)
                 {
                     min = person.Value;
