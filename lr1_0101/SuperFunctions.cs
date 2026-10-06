@@ -40,10 +40,18 @@ namespace lr1_0101
             }
             return result;
         }
-            
-        public static double AllCost(int cost,double deliverycost)
+        public static double ExtraTime(int time, double deliverycost)
         {
-            double result = cost + deliverycost;
+            if (time >=12 && time <=14 || time >=18 && time <= 20)
+            {
+                return (deliverycost * 30) / 100;
+            }
+            return 0;
+        }
+
+        public static double AllCost(int cost,double deliverycost, double extratime)
+        {
+            double result = cost + deliverycost + extratime;
             return result;
         }
     }
