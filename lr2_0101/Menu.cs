@@ -8,9 +8,9 @@ namespace lr2_0101
 {
     public struct Menu
     {
-        public int id;
-        public string name;
-        public int price;
-        public int amount;
+        public int id_;
+        public string name_;
+        public int price_;
+        public int amount_;
     }
 }
