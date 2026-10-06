@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace lr2_0101
 {
-    internal class Program
+    public struct Menu
     {
-        static void Main(string[] args)
-        {
-            
-        }
+        public int id;
+        public string name;
+        public int price;
+        public int amount;
     }
 }
