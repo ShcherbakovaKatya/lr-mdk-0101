@@ -12,7 +12,6 @@ namespace lr1_0101
         {
             while (true)
             {
-                Console.Write("Введите стоимость заказа (руб.):");
                 string a = Console.ReadLine();
                 bool isValid1 = int.TryParse(a, out int number) && number > 0;
                 if (isValid1)
@@ -27,54 +26,20 @@ namespace lr1_0101
 
         }
 
-        public static int Input2()
-        {
-            while (true)
-            {
-                Console.Write("Введите расстояние доставки (км): ");
-                string a = Console.ReadLine();
-                bool isValid = int.TryParse(a, out int number) && number > 0;
-                if (isValid)
-                {
-                    return number;
-                }
-                else
-                {
-                    Console.Write("Ошибка попробуй еще раз");
-                }
-            }
-        }
-        public static int Input3()
-        {
-            while (true)
-            {
-                Console.Write("Введите время заказа (час): ");
-                string a = Console.ReadLine();
-                bool isValid = int.TryParse(a, out int number) && number > 0;
-                if (isValid)
-                {
-                    return number;
-                }
-                else
-                {
-                    Console.Write("Ошибка попробуй еще раз");
-                }
-            }
-        }
-        public static double DeliveryCost(int a, int b, int c)
+        public static double DeliveryCost(int cost, int distance, int time)
         {
             double result = 0;
-            if (a < 2000)
+            if (cost < 2000)
             {
-                if (b < 3)
+                if (distance < 3)
                 {
                     result = 150;
                 }
                 else
                 {
-                    result = 150 + ((b - 3) * 50);
+                    result = 150 + ((distance - 3) * 50);
                 }
-                if (c == 12 || c == 13 || c == 14 || c == 18 || c == 19 || c == 20)
+                if (time == 12 || time == 13 || time == 14 || time == 18 || time == 19 || time == 20)
                 {
                     result = result + result * 0.3;
                 }
@@ -85,10 +50,10 @@ namespace lr1_0101
             }
             return result;
         }
-        public static double AllCost(int a,double b)
+        public static double AllCost(int cost,double deliverycost)
         {
-            double c = a + b;
-            return c;
+            double result = cost + deliverycost;
+            return result;
         }
     }
 }
