@@ -87,8 +87,28 @@ namespace vocalabory
                 }
 
             Console.WriteLine("Период с максимальной посещаемостью: ");
-
+            //Console.WriteLine($"{FinalPeriods(PeriodsMax)[0]} - {FinalPeriods(PeriodsMax)[FinalPeriods(PeriodsMax).Count - 1]}");
             Console.WriteLine("\nПериод с минимальной посещаемостью: ");
+
+
+        }
+        //public static List<int> FinalPeriods(List<int> a)
+        //{
+        //    List<int> b = new List<int>();
+        //    foreach (var i in a)
+        //        if (a[i + 1] - a[i] == 1)
+        //        {
+        //            b.Add(i);
+        //        }
+        //    //for (int i = 0; i < a.Count - 1; i++)
+        //    //{
+        //    //    if (a[i+1] - a[i] == 1) 
+        //    //    {
+        //    //        b.Add(i);
+        //    //    }
+
+        //    //}
+        //    return b;
 
         }
     }
