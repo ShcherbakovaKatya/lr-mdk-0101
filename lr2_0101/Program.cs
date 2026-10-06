@@ -16,15 +16,17 @@ namespace lr2_0101
             Menu compote = CreateDish(4, "компот", 45, 40);
             Menu salat = CreateDish(5, "салат", 120, 18);
             List <Menu> menus = new List<Menu>() { borsch, cutlet, mash, compote, salat};
+            Print(menus);
         }
         static Menu CreateDish(int id, string name, int price, int amount)
         {
             Menu Dish = new Menu() { id_ = id, name_ = name, price_ = price, amount_ = amount };
             return Dish;
         }
-
-
-
-
+        static void Print(List<Menu> menus)
+        {
+            foreach (Menu menu in menus)
+                Console.WriteLine($"{menu.id_}. {menu.name_} - {menu.price_} руб., {menu.amount_} порц.");
+        }
     }
 }
