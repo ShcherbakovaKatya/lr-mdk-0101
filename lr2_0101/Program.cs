@@ -17,6 +17,7 @@ namespace lr2_0101
             Menu salat = CreateDish(5, "салат", 120, 18);
             List <Menu> menus = new List<Menu>() { borsch, cutlet, mash, compote, salat};
             Print(menus);
+            GetDish(menus);
         }
         static Menu CreateDish(int id, string name, int price, int amount)
         {
@@ -27,6 +28,36 @@ namespace lr2_0101
         {
             foreach (Menu menu in menus)
                 Console.WriteLine($"{menu.id_}. {menu.name_} - {menu.price_} руб., {menu.amount_} порц.");
+        }
+        static List<Menu> GetDish(List<Menu> menus)
+        {
+            List<Menu> Order = new List<Menu>();
+            
+            while(true)
+            {
+                Console.Write("Введите номер блюда (0 — конец заказа):");
+                if (int.TryParse(Console.ReadLine(), out int num))
+                {
+                    if (num > 5)
+                    {
+                        Console.WriteLine("Ошибка введите еще раз");
+                    }
+                    else 
+                    {
+                        if (num == 0) break;
+                        Console.Write("Введите количество:");
+                        int b = Convert.ToInt32(Console.ReadLine());
+
+                        foreach (Menu dish in menus)
+                            if (dish.id_ == num && dish.amount_ >= b)
+                            {
+                                Order.Add(dish);
+                            }
+                    }
+                }
+               
+            }
+            return Order;
         }
     }
 }
