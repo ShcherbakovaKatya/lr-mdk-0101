@@ -19,6 +19,12 @@ namespace lr2_0101
             List<Menu> menus = new List<Menu>() { borsch, cutlet, mash, compote, salat };
 
             Print(menus);
+
+            Dictionary<string, int> order = GetDish(menus);
+
+
+
+            Console.ReadKey();
         }
 
         static Menu CreateDish(int id, string name, int price, int amount)
@@ -30,6 +36,46 @@ namespace lr2_0101
         {
             foreach (Menu menu in menus)
                 Console.WriteLine($"{menu.id_}. {menu.name_} - {menu.price_} руб., {menu.amount_} порц.");
+        }
+
+        static Dictionary<string, int> GetDish(List<Menu> menus)
+        {
+            Dictionary<string, int> order = new Dictionary<string, int>();
+
+            while (true)
+            {
+                Console.Write("Введите номер блюда (0 — конец заказа): ");
+                if (int.TryParse(Console.ReadLine(), out int num) && num <= 5)
+                {
+                    if (num == 0) break;
+
+                    Menu selected = null;
+                    foreach (Menu dish in menus)
+                        if (dish.id_ == num)
+                        {
+                            selected = dish;
+                            break;
+                        }
+
+                    Console.Write("Введите количество: ");
+                    if (!int.TryParse(Console.ReadLine(), out int quantity) || quantity <= 0)
+                    {
+                        Console.WriteLine("Некорректное количество.");
+                    }
+
+                    if (selected.amount_ < quantity)
+                    {
+                        Console.WriteLine("У нас нет столько порций!");
+                    }
+
+                    selected.amount_ -= quantity;
+
+                    order[selected.name_] = quantity;
+                }
+                else Console.WriteLine("Блюда с таким номером не существует.");
+            }
+
+            return order;
         }
     }
 }
