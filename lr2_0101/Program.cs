@@ -22,7 +22,7 @@ namespace lr2_0101
 
             Dictionary<string, int> order = GetDish(menus);
 
-
+            PrintFinalStock(menus);
 
             Console.ReadKey();
         }
@@ -76,6 +76,17 @@ namespace lr2_0101
             }
 
             return order;
+        }
+
+        static void PrintFinalStock(List<Menu> menu)
+        {
+            Console.Write("Остатки порций: ");
+            for (int i = 0; i < menu.Count; i++)
+            {
+                Console.Write($"{menu[i].name_} {menu[i].amount_}");
+                if (i < menu.Count - 1) Console.Write(", ");
+            }
+            Console.WriteLine();
         }
     }
 }
