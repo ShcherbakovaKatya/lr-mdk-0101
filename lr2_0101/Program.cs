@@ -22,6 +22,7 @@ namespace lr2_0101
 
             Dictionary<string, int> order = GetDish(menus);
 
+            Console.WriteLine($"Стоимость заказа: {CalculateTotal(order, menus)} руб.");
             PrintFinalStock(menus);
 
             Console.ReadKey();
@@ -87,6 +88,23 @@ namespace lr2_0101
                 if (i < menu.Count - 1) Console.Write(", ");
             }
             Console.WriteLine();
+        }
+
+        static int CalculateTotal(Dictionary<string, int> order, List<Menu> menu)
+        {
+            int total = 0;
+            foreach (var item in order)
+            {
+                foreach (var dish in menu)
+                {
+                    if (dish.name_ == item.Key)
+                    {
+                        total += dish.price_ * item.Value;
+                        break;
+                    }
+                }
+            }
+            return total;
         }
     }
 }
