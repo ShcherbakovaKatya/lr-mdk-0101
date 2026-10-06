@@ -28,28 +28,19 @@ namespace lr1_0101
 
         public static double DeliveryCost(int cost, int distance, int time)
         {
-            double result = 0;
-            if (cost < 2000)
+            double result = 150;
+            if (cost >= 2000)
             {
-                if (distance < 3)
-                {
-                    result = 150;
-                }
-                else
-                {
-                    result = 150 + ((distance - 3) * 50);
-                }
-                if (time == 12 || time == 13 || time == 14 || time == 18 || time == 19 || time == 20)
-                {
-                    result = result + result * 0.3;
-                }
+                return 0;
             }
-            else
+
+            if (distance > 3)
             {
-                result = 0;
+                result = 150 + ((distance - 3) * 50);
             }
             return result;
         }
+            
         public static double AllCost(int cost,double deliverycost)
         {
             double result = cost + deliverycost;
