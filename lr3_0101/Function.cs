@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static lr3_0101.Ordering;
 
 namespace lr3_0101
 {
@@ -36,6 +37,23 @@ namespace lr3_0101
                     return value;
                 Console.WriteLine("Ошибка ввода. Повторите попытку.");
             }
+        }
+
+        public static Order GetOrder(List<Dish> menu)
+        {
+            Order order = new Order();
+
+            while (true)
+            {
+                int id = ReadNumber("Введите номер блюда (0 — конец заказа): ", 0, 5);
+                if (id == 0)
+                    break;
+
+                int quantity = ReadNumber("Введите количество: ", 0, 10000000);
+                Dish dish = menu[id - 1];
+                order.AddDish(dish, quantity);
+            }
+            return order;
         }
     }
 }
