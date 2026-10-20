@@ -24,5 +24,18 @@ namespace lr3_0101
             foreach (Dish dish in menu)
                 Console.WriteLine($"{dish.Id}. {dish.Name} - {dish.Price} руб., {dish.Amount} порц.");
         }
+
+        public static int ReadNumber(string prompt, int min, int max)
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                string input = Console.ReadLine();
+                int value;
+                if (int.TryParse(input, out value) && value >= min && value <= max)
+                    return value;
+                Console.WriteLine("Ошибка ввода. Повторите попытку.");
+            }
+        }
     }
 }
