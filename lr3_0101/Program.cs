@@ -10,7 +10,9 @@ namespace lr3_0101
     {
         static void Main(string[] args)
         {
-            Function.CreateMenu();
+            List<Dish> menu = Function.CreateMenu();
+
+            Function.Print(menu);
         }
     }
 }

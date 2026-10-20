@@ -18,5 +18,11 @@ namespace lr3_0101
             menu.Add(new Dish(5, "салат", 120, 18));
             return menu;
         }
+
+        public static void Print(List<Dish> menu)
+        {
+            foreach (Dish dish in menu)
+                Console.WriteLine($"{dish.Id}. {dish.Name} - {dish.Price} руб., {dish.Amount} порц.");
+        }
     }
 }
