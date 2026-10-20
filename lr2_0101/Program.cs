@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace lr2_0101
 {
@@ -10,36 +13,37 @@ namespace lr2_0101
     {
         static void Main(string[] args)
         {
-            Menu borsch = CreateDish(1, "борщ", 85, 30);
-            Menu cutlet = CreateDish(2, "котлета", 240, 25);
-            Menu mash = CreateDish(3, "пюре", 60, 35);
-            Menu compote = CreateDish(4, "компот", 45, 40);
-            Menu salat = CreateDish(5, "салат", 120, 18);
+            List<Dish> menu = CreateMenu();
 
-            List<Menu> menus = new List<Menu>() { borsch, cutlet, mash, compote, salat };
+            Print(menu);
 
-            Print(menus);
+            Dictionary<string, int> order = GetDish(menu);
 
-            Dictionary<string, int> order = GetDish(menus);
-
-            Console.WriteLine($"Стоимость заказа: {CalculateTotal(order, menus)} руб.");
-            PrintFinalStock(menus);
+            Console.WriteLine($"Стоимость заказа: {CalculateTotal(order, menu)} руб.");
+            PrintFinalStock(menu);
 
             Console.ReadKey();
         }
 
-        static Menu CreateDish(int id, string name, int price, int amount)
+        public static List<Dish> CreateMenu()
         {
-            return new Menu() { id_ = id, name_ = name, price_ = price, amount_ = amount };
+            Dish borsch = new Dish() { id_ = 1, name_ = "борщ", price_ = 85, amount_ = 30 };
+            Dish cutlet = new Dish() { id_ = 2, name_ = "котлета", price_ = 240, amount_ = 25 };
+            Dish mash = new Dish() { id_ = 3, name_ = "пюре", price_ = 60, amount_ = 35 };
+            Dish compote = new Dish() { id_ = 4, name_ = "компот", price_ = 45, amount_ = 40 };
+            Dish salat = new Dish() { id_ = 5, name_ = "салат", price_ = 120, amount_ = 18 };
+
+            List<Dish> menu = new List<Dish>() { borsch, cutlet, mash, compote, salat };
+            return menu;
         }
 
-        static void Print(List<Menu> menus)
+        static void Print(List<Dish> menu)
         {
-            foreach (Menu menu in menus)
-                Console.WriteLine($"{menu.id_}. {menu.name_} - {menu.price_} руб., {menu.amount_} порц.");
+            foreach (Dish dish in menu)
+                Console.WriteLine($"{dish.id_}. {dish.name_} - {dish.price_} руб., {dish.amount_} порц.");
         }
 
-        static Dictionary<string, int> GetDish(List<Menu> menus)
+        static Dictionary<string, int> GetDish(List<Dish> menu)
         {
             Dictionary<string, int> order = new Dictionary<string, int>();
 
@@ -50,8 +54,8 @@ namespace lr2_0101
                 {
                     if (num == 0) break;
 
-                    Menu selected = null;
-                    foreach (Menu dish in menus)
+                    Dish selected = null;
+                    foreach (Dish dish in menu)
                         if (dish.id_ == num)
                         {
                             selected = dish;
@@ -59,19 +63,18 @@ namespace lr2_0101
                         }
 
                     Console.Write("Введите количество: ");
-                    if (!int.TryParse(Console.ReadLine(), out int quantity) || quantity <= 0)
+                    if (int.TryParse(Console.ReadLine(), out int quantity) || quantity > 0)
                     {
-                        Console.WriteLine("Некорректное количество.");
+                        if (quantity <= selected.amount_)
+                        {
+                            order[selected.name_] = quantity;
+                            Console.WriteLine("Добавлено в заказ");
+                            selected.amount_ -= quantity;
+                        }
+                        else Console.WriteLine("У нас нет столько порций!");
                     }
 
-                    if (selected.amount_ < quantity)
-                    {
-                        Console.WriteLine("У нас нет столько порций!");
-                    }
 
-                    selected.amount_ -= quantity;
-
-                    order[selected.name_] = quantity;
                 }
                 else Console.WriteLine("Блюда с таким номером не существует.");
             }
@@ -79,7 +82,7 @@ namespace lr2_0101
             return order;
         }
 
-        static void PrintFinalStock(List<Menu> menu)
+        static void PrintFinalStock(List<Dish> menu)
         {
             Console.Write("Остатки порций: ");
             for (int i = 0; i < menu.Count; i++)
@@ -90,7 +93,7 @@ namespace lr2_0101
             Console.WriteLine();
         }
 
-        static int CalculateTotal(Dictionary<string, int> order, List<Menu> menu)
+        static int CalculateTotal(Dictionary<string, int> order, List<Dish> menu)
         {
             int total = 0;
             foreach (var item in order)

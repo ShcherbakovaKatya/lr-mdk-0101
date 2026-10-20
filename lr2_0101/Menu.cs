@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lr2_0101
 {
-    public class Menu
+    public class Dish
     {
         public int id_ { get; set; }
         public string name_ { get; set; }
