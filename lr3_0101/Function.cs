@@ -68,5 +68,23 @@ namespace lr3_0101
             }
             return OrderStatus.Success;
         }
+
+        public static void ApplyOrder(Order order)
+        {
+            foreach (OrderLine line in order.Lines)
+            {
+                line.Dish.Amount -= line.Quantity;
+            }
+        }
+        public static void PrintFinalStock(List<Dish> menu)
+        {
+            Console.Write("Остатки порций: ");
+            for (int i = 0; i < menu.Count; i++)
+            {
+                if (i > 0) Console.Write(", ");
+                Console.Write($"{menu[i].Name} {menu[i].Amount}");
+            }
+            Console.WriteLine();
+        }
     }
 }
