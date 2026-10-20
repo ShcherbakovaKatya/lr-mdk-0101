@@ -55,5 +55,18 @@ namespace lr3_0101
             }
             return order;
         }
+
+        public static OrderStatus CheckStock(Order order)
+        {
+            if (order.Lines.Count == 0)
+                return OrderStatus.Empty;
+
+            foreach (OrderLine line in order.Lines)
+            {
+                if (line.Quantity > line.Dish.Amount)
+                    return OrderStatus.NotEnoughStock;
+            }
+            return OrderStatus.Success;
+        }
     }
 }

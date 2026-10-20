@@ -8,7 +8,7 @@ namespace lr3_0101
 {
     internal class Ordering
     {
-        enum OrderStatus
+        public enum OrderStatus
         {
             Success,        
             Empty,          
