@@ -4,8 +4,9 @@ namespace Наследование
 {
     public class Product
     {
-        private string name_;
-        private double price_;
-        private int amount_;
+        protected string name_;
+        protected double price_;
+        protected int amount_;
+
     }
 }
