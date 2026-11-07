@@ -7,22 +7,20 @@ namespace Наследование
     {
         public override int FindDiscount()
         {
-            int discount = 0;
-
-            if (amount_ >= 20 && amount_ <= 150)
+            if (amount_ >= 20 && amount_ < 150)
             {
-                discount += 10;
+                return 10;
             }
             if (amount_ >= 150 && amount_ <= 300)
             {
-                discount += 30;
+                return 30;
             }
             if (amount_ > 300)
             {
-                discount += 50;
+                return 50;
             }
-
-            return discount;
+            else
+                return base.FindDiscount();
         }
     }
 }

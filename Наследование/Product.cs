@@ -38,8 +38,7 @@ namespace Наследование
 
         public virtual int FindDiscount()
         {
-            int discount = 0;
-            return discount;
+            return 0;
         }
     }
 }
