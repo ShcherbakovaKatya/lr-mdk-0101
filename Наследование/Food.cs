@@ -11,15 +11,15 @@ namespace Наследование
 
             if (amount_ >= 20 && amount_ <= 150)
             {
-                discount = 10;
+                discount += 10;
             }
             if (amount_ >= 150 && amount_ <= 300)
             {
-                discount = 30;
+                discount += 30;
             }
             if (amount_ > 300)
             {
-                discount = 50;
+                discount += 50;
             }
 
             return discount;
