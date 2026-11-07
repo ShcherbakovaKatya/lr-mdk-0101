@@ -35,5 +35,11 @@ namespace Наследование
         {
             return amount_;
         }
+
+        public virtual int FindDiscount()
+        {
+            int discount = 0;
+            return discount;
+        }
     }
 }
