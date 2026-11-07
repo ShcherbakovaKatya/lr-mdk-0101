@@ -53,7 +53,8 @@ namespace Наследование
             products.Add(eggs);
             products.Add(soap);
 
-
+            foreach (Product item in products)
+                Console.WriteLine($"{item.FindDiscount()}% скидка на товар {item.GetName()}");
 
         }
     }
