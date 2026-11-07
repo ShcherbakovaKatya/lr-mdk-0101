@@ -19,8 +19,7 @@ namespace Наследование
             {
                 return 50;
             }
-            else
-                return base.FindDiscount();
+            return base.FindDiscount();
         }
     }
 }
