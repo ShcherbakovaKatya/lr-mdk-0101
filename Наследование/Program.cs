@@ -45,6 +45,14 @@ namespace Наследование
             soap.SetPrice(200);
             soap.SetAmount(3);
 
+            List<Product> products = new List<Product>();
+            products.Add(jeans);
+            products.Add(shirt);
+            products.Add(bread);
+            products.Add(milk);
+            products.Add(eggs);
+            products.Add(soap);
+
 
 
         }
