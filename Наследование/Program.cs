@@ -54,8 +54,14 @@ namespace Наследование
             products.Add(soap);
 
             foreach (Product item in products)
-                Console.WriteLine($"{item.FindDiscount()}% скидка на товар {item.GetName()}");
+            {
+                double summ = item.GetPrice() * item.GetAmount();
+                double summDiscount = summ - summ * item.FindDiscount() / 100;
+                Console.WriteLine($"Название товара: {item.GetName()}. Цена за единицу: {item.GetPrice()}. Колличество проданного: {item.GetAmount()}. {item.FindDiscount()}% скидка на товар. Сумма без скидки {summ}. С учетом скидки {summDiscount}");
 
+
+            }
+            
         }
     }
 }
