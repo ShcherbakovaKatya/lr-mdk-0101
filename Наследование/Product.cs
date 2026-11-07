@@ -41,7 +41,5 @@ namespace Наследование
             int discount = 0;
             return discount;
         }
-
-
     }
 }
