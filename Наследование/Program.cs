@@ -11,12 +11,12 @@ namespace Наследование
         static void Main(string[] args)
         {
 
-            Product jeans = Functions.CreateClothes("Джинсы", 3300, 7);
-            Product shirt = Functions.CreateClothes("Рубашка", 1200, 11);
-            Product bread = Functions.CreateFood("Хлеб", 80, 21);
-            Product milk = Functions.CreateFood("Молоко", 140, 160);
-            Product eggs = Functions.CreateFood("Яйца", 110, 302);
-            Product soap = Functions.CreateProduct("Мыло", 200, 3);
+            Product jeans = Functions.CreateProduct("Джинсы", 3300, 7, "Clothes");
+            Product shirt = Functions.CreateProduct("Рубашка", 1200, 11, "Clothes");
+            Product bread = Functions.CreateProduct("Хлеб", 80, 21, "Food");
+            Product milk = Functions.CreateProduct("Молоко", 140, 160, "Food");
+            Product eggs = Functions.CreateProduct("Яйца", 110, 302, "Food");
+            Product soap = Functions.CreateProduct("Мыло", 200, 3, " ");
 
             List<Product> products = new List<Product>();
             products.Add(jeans);
