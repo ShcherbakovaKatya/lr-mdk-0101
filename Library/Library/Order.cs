@@ -45,6 +45,15 @@ namespace Library
 
             return order;
         }
+        public static int GetDiscount(List<PrintedEdition> order)
+        {
+            int discount = 0;
 
+            if ((order.Count(item => item.GetType() == "Журнал") >= 3)) discount = 15;
+
+            if ((order.Count(item => item.GetType() == "Книга") >= 2) && (order.Count(item => item.GetType() == "Учебник") > 0)) discount = 50;
+
+            return discount;
+        }
     }
 }
