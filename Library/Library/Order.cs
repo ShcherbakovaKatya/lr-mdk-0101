@@ -55,5 +55,14 @@ namespace Library
 
             return discount;
         }
+
+        public static void PrintOrder(List<PrintedEdition> order)
+        {
+            Console.WriteLine("\nВАШ ЗАКАЗ:");
+            foreach (PrintedEdition item in order)
+                Console.WriteLine($"{item.GetType()}, {item.GetName()}, {item.GetYear()}, {item.GetAuthor()}");
+            Console.WriteLine($"\nВаша скидка: {Order.GetDiscount(order)}%");
+
+        }
     }
 }
