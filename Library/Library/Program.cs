@@ -11,7 +11,7 @@ namespace Library
     {
         static void Main(string[] args)
         {
-
+            List<PrintedEdition> list = CsvAction.CsvRead("LibraryInformation.csv");
         }
     }
 }
